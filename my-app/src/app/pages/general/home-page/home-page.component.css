@@ -1,0 +1,51 @@
+.weather-icon {
+    width: 100px;
+    text-align: center;
+}
+
+.weather-card {
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(225deg, rgba(224,249,250,1) 0%, rgba(121,225,240,1) 15%, rgba(74,184,222,1) 100%);
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .location {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  .localisation-icon{
+    width: 20px;
+  }
+  
+  .temperature-display {
+    display: flex;
+    align-items: baseline;
+  }
+  
+  .temperature {
+    font-size: 4em;
+    font-weight: bold;
+  }
+  
+  .degree-symbol {
+    font-size: 0.6em;
+    vertical-align: super;
+  }
+  
+  .weather-details {
+    font-weight: bold;
+  }
+  
+  .max-min-temperature,
+  .feels-like {
+    display: block;
+  }
+  
+  .weather-description {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
