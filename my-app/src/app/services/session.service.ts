@@ -1,13 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-  private apiUrl = `${process.env['API_URL']}/api/sessions`;
+  private apiUrl = `${environment.apiUrl}/api/sessions`;
   constructor(private http: HttpClient) {}
 
   createSession(sessionData: { email: string, lat: number, lng: number, timezone: string}) {
