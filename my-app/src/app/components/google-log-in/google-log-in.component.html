@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body text-center">
+            <img src="../../../assets/logo-cloud-weather.png" alt="App Logo" class="mb-4" style="width: 100px;"> <!-- Logo -->
+            <h1 class="card-title">Message important</h1>
+            <p class="card-text">En vous connectant, vous acceptez nos <a href="#" data-bs-toggle="modal" data-bs-target="#cguModal">CGU</a> et autorisez l'utilisation de votre géolocalisation.</p>
+
+            <!-- Modal -->
+            <div class="modal fade" id="cguModal" tabindex="-1" aria-labelledby="cguModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h2 class="modal-title text-center" id="cguModalLabel">Conditions Générales d'Utilisation de Cloud Weather</h2>
+                    </div>
+                    <div class="modal-body">
+                    <!-- Insérez le contenu de vos CGU ici -->
+                    <p>Bienvenue sur Cloud Weather ! En accédant ou en utilisant notre application et ses services associés, vous acceptez de vous conformer aux présentes conditions générales d'utilisation.
+                    </p>
+
+                    <h4>1. Acceptation des Conditions</h4>
+                    <p>Lorsque vous créez un compte ou utilisez notre service, vous acceptez d'être lié par ces CGU et notre Politique de Confidentialité. Si vous n'acceptez pas les termes, vous ne devez pas accéder au service.</p>
+
+                    <h4>2. Compte Google</h4>
+                    <p>Pour accéder à certaines parties de notre service, vous devez vous connecter à l'aide de votre compte Google via Google Sign-In. Vous acceptez de ne pas partager les informations de votre compte avec des tiers et d'être entièrement responsable de toutes les activités sous votre compte.</p>
+
+                    <h4>3. Utilisation des Données de Localisation</h4>
+                    <p>Nous utilisons les services de localisation tels que Leaflet pour fournir des cartes et des informations géolocalisées. Vous consentez à la collecte et à l'utilisation de vos données de localisation conformément à notre Politique de Confidentialité.</p>
+
+                    <h4>4. Informations Météorologiques</h4>
+                    <p>Notre service fournit des informations météorologiques grâce à l'API OpenWeather. Ces informations sont fournies "telles quelles" et nous ne sommes pas responsables des inexactitudes.</p>
+
+                    <h4>5. Droits de Propriété Intellectuelle</h4>
+                    <p>Le service et ses contenus originaux, fonctionnalités et fonctionnalités restent la propriété exclusive de Cloud Weather et de ses concédants de licence.</p>
+
+                    <h4>6. Limitation de Responsabilité</h4>
+                    <p>Notre service est fourni sans garanties de performance ou de disponibilité. Dans la mesure maximale permise par la loi, nous ne serons pas responsables des dommages indirects.</p>
+
+                    <h4>7. Modifications du Service et des CGU</h4>
+                    <p>Nous nous réservons le droit de modifier ou d'arrêter notre service ainsi que de réviser les CGU à tout moment. La dernière version des CGU sera toujours publiée sur cette page.</p>
+
+                    <h4>8. Contactez-nous</h4>
+                    <p>Si vous avez des questions sur ces CGU, veuillez nous contacter à : emmarinaldo&#64;hotmail.fr.</p>
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="google-login-button" (click)="signInWithGoogle()">
+              Se connecter avec Google
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

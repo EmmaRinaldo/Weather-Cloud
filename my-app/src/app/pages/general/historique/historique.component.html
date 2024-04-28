@@ -1,0 +1,90 @@
+<div class="dashboard">
+  <div *ngIf="profile; else notLoggedIn">
+    <app-nav-bar [profile]="profile" [pageName]="pageName"/>
+        
+    <!-- Bootstrap table for displaying session history -->
+    <div class="container mt-4" *ngIf="!isLoading; else loading">
+      <table class="table table-borderless table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Heure</th>
+            <th scope="col">Localisation</th>
+            <th scope="col">Temp</th>
+            <!-- Les colonnes suivantes seront masquées sur les petits écrans -->
+            <th scope="col" class="d-none d-md-table-cell">Météo</th>
+            <th scope="col" class="d-none d-md-table-cell">Min</th>
+            <th scope="col" class="d-none d-md-table-cell">Max</th>
+            <th scope="col" class="d-none d-md-table-cell">Ressentie</th>
+            <th scope="col" class="d-none d-md-table-cell">Humidité</th>
+            <th scope="col" class="d-md-none">Plus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let session of sessions; let i = index">
+            <tr>
+              <td>{{ session.date }}</td>
+              <td>{{ session.time }}</td>
+              <td>{{ session.name }}</td>
+              <td>{{ session.temperature }}°C</td>
+              <!-- Les cellules suivantes seront masquées sur les petits écrans -->
+              <td class="d-none d-md-table-cell">{{ session.weather }} - <img [src]="getIconUrl(session.weatherIcon)" alt="Weather Icon" style="width: 30px;"></td>
+              <td class="d-none d-md-table-cell">{{ session.temp_min }}°C</td>
+              <td class="d-none d-md-table-cell">{{ session.temp_max }}°C</td>
+              <td class="d-none d-md-table-cell">{{ session.feels_like }}°C</td>
+              <td class="d-none d-md-table-cell">{{ session.humidity }}%</td>
+              <!-- Bouton pour afficher les détails sur les petits écrans -->
+              <td class="d-md-none">
+                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#details-' + i" aria-expanded="false" aria-controls="'details-' + i">
+                  Détails
+                </button>
+              </td>
+              
+            </tr>
+            <tr class="d-md-none">
+              <td colspan="5">
+                <div class="collapse" [id]="'details-' + i">
+                  <div class="card card-body">
+                    <p>Météo: {{ session.weather }} - <img [src]="getIconUrl(session.weatherIcon)" alt="Weather Icon" style="width: 30px;"></p>
+                    <p>Temp Min: {{ session.temp_min }}°C</p>
+                    <p>Temp Max: {{ session.temp_max }}°C</p>
+                    <p>Ressentie: {{ session.feels_like }}°C</p>
+                    <p>Humidité: {{ session.humidity }}%</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <!-- Loading spinner -->
+    <ng-template #loading>
+      <div class="text-center">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  
+  
+  <ng-template #notLoggedIn>
+    <div class="container text-center mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow border-0">
+            <div class="card-body">
+              <img src="../../../assets/logo-cloud-weather.png" alt="App Logo" class="mb-4" style="width: 100px;">
+              <h2 class="card-title">Bonjour !</h2>
+              <p class="card-text">Pour accéder à votre compte, veuillez vous connecter.</p>
+              <button class="btn btn-primary" (click)="logOut()">Retour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+  

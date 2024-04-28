@@ -1,0 +1,81 @@
+<div *ngIf="!isLoading">
+  <div *ngIf="profile; else notLoggedIn">
+    
+    <app-nav-bar [profile]="profile" [pageName]="pageName"/>
+    <div class="container">
+      <div class="row align-items-start">
+
+        <!-- Informations météorologiques et de localisation -->
+        <div class="col-lg-6 order-lg-2 mb-4" style="padding: 15px;">
+          <div class="weather-card text-white">
+            <div *ngIf="sessionInfo; else loading" class="mb-3 h-100">
+
+              <div class="row">
+                <div class="col align-self-start">
+                  
+                  <h2 class="location"><img src="../../../../assets/icon-localisation.png" alt="Localisation Icon" class="localisation-icon">{{ sessionInfo.name }}</h2>
+                  <div class="temperature-display">
+                    <span class="temperature">{{ sessionInfo.temperature }}°</span>
+                  </div>
+                </div>
+                <div class="col align-self-center">
+                  <img [src]="'http://openweathermap.org/img/wn/' + sessionInfo.weatherIcon + '.png'" class="weather-icon" alt="Weather Icon">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="weather-details col align-self-center">
+                  <span class="max-min-temperature">{{ sessionInfo.temp_min }}° / {{ sessionInfo.temp_max }}°</span>
+                  <span class="feels-like">Ressenti {{ sessionInfo.feels_like }}°</span>
+                </div>
+                <div class="weather-description" style="text-transform : capitalize;">{{ sessionInfo.weather }}</div>
+                <span class="card-text">Humidité: {{ sessionInfo.humidity }}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Carte -->
+        <div class="col-lg-6 order-lg-1 mb-4">
+          <div class="map-container h-100">
+            <app-map (locationFound)="onLocationFound($event)"></app-map>
+          </div>
+        </div>
+
+      </div>
+
+      <ng-template #loading>
+        <div class="text-center" style="padding: 15px;">
+          <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        
+      </ng-template>
+
+    </div>
+  </div>
+    
+
+
+  
+  <ng-template #notLoggedIn>
+    <div class="container text-center mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow border-0">
+            <div class="card-body">
+              <img src="../../../assets/logo-cloud-weather.png" alt="App Logo" class="mb-4" style="width: 100px;">
+              <h2 class="card-title">Bonjour !</h2>
+              <p class="card-text">Pour accéder à votre compte, veuillez vous connecter.</p>
+              <button class="btn btn-primary" (click)="logOut()">Retour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
+
+  
+</div>
