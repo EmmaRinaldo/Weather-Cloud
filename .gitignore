@@ -47,7 +47,3 @@ env
 __pycache__
 .pytest_cache
 .coverage
-
-environments/
-src/environments/*.ts
-!src/environments/environment.model.ts
