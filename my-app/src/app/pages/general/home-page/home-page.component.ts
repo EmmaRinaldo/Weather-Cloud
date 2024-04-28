@@ -109,7 +109,6 @@ export class HomePageComponent implements OnInit {
         error: (error) => {
           console.error('Error retrieving session data', error);
           this.isLoading = false;
-          // En cas d'erreur lors de la récupération, vous pourriez également envisager de créer une nouvelle session
           this.sendSessionData();
         }
       });

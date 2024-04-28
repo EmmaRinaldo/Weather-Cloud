@@ -67,7 +67,6 @@ export class AuthGoogleService {
     return this.oAuthService.getAccessToken();
   }
 
-  // Ajoutez cette méthode pour obtenir le profil courant
   getProfile() {
     return this.profileSubject.value; // Retourne la dernière valeur du profile stockée dans BehaviorSubject
   }
