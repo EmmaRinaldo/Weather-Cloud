@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
           this.firstLoad = true;
           this.lastEmail = this.profile.email;
         }
-        if (this.firstLoad || !this.lastInjection || (Date.now() - this.lastInjection > 60000)) {
+        if (this.firstLoad || !this.lastInjection || (Date.now() - this.lastInjection > 60000)) {// regarde ça ce soir
           this.sendSessionData();
           this.firstLoad = false;
         } else {
@@ -123,7 +123,7 @@ export class HomePageComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
     this.firstLoad = false;
-    this.lastEmail = null;
+    this.lastEmail = null; // revoir ça ce soir (je devrais peut être le supprimer)
     this.lastInjection = null;
   }
 
