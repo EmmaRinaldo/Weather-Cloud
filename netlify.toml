@@ -1,0 +1,4 @@
+[build]
+base = "my-app/"
+publish = "dist/my-app"
+command = "ng build --configuration production"
