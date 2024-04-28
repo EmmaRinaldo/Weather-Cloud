@@ -1,4 +1,8 @@
 [build]
 base = "my-app/"
-publish = "dist/my-app"
+publish = "dist/my-app/browser"
 command = "ng build --configuration production"
+
+[[plugins]]
+package = "@netlify/angular-runtime"
+
