@@ -35,7 +35,7 @@ export class MapComponent implements OnInit {
     this.map.locate({setView: true, maxZoom: 16});
 
     const Icon = L.icon({
-      iconUrl: 'assets/icon-marqueur.png',
+      iconUrl: 'assets/icon-marqueur.webp',
       iconSize: [35, 35],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
