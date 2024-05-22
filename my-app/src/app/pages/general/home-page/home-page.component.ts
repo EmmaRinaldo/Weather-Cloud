@@ -80,7 +80,6 @@ export class HomePageComponent implements OnInit {
         next: (data) => {
           if (data && Object.keys(data).length > 0) {
             this.sessionInfo = data; // Stocke les informations de session
-            console.log('Retrieved session data:', this.sessionInfo);
           } else {
             console.log('No session data found, creating new session.');
             this.sendSessionData(); // Aucune donnée trouvée, donc création d'une nouvelle session
