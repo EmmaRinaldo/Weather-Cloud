@@ -25,9 +25,6 @@ export class HomePageComponent implements OnInit {
   locationData: any;
   sessionInfo: any;
   isLoading: boolean = true;
-  firstLoad: boolean = false;
-  lastEmail: string | null = null;
-  lastInjection: number | null = null;
   
 
   constructor( 
@@ -44,16 +41,7 @@ export class HomePageComponent implements OnInit {
 
       if (!isLoading) {
         this.profile = this.authService.getProfile();
-        if (this.lastEmail !== this.profile.email) {
-          this.firstLoad = true;
-          this.lastEmail = this.profile.email;
-        }
-        if (this.firstLoad || !this.lastInjection || (Date.now() - this.lastInjection > 60000)) {// regarde ça ce soir
-          this.sendSessionData();
-          this.firstLoad = false;
-        } else {
-          this.retrieveSessionData();
-        }
+        this.sendSessionData();
         this.cdr.detectChanges();
       }
     });
@@ -62,12 +50,7 @@ export class HomePageComponent implements OnInit {
 
   onLocationFound(latlng: any): void {
     this.locationData = latlng;
-    if (this.firstLoad) {
-      this.sendSessionData();
-      this.firstLoad = false;
-    } else {
-      this.retrieveSessionData();
-    }
+    this.sendSessionData();
   }
 
   sendSessionData(): void {
@@ -85,7 +68,6 @@ export class HomePageComponent implements OnInit {
       this.sessionService.createSession(sessionData).subscribe({
         next: (res: any) => {
           this.retrieveSessionData();
-          this.lastInjection = Date.now();
         },
         error: (err: any) => console.error('Error creating session', err)
       });
@@ -108,22 +90,17 @@ export class HomePageComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error retrieving session data', error);
-          this.isLoading = false;
           this.sendSessionData();
         }
       });
     } else {
       console.error('Profile data is incomplete or not available');
-      this.isLoading = false;
     }
   }
 
   logOut() {
     this.authService.logout();
     this.router.navigate(['/login']);
-    this.firstLoad = false;
-    this.lastEmail = null; // revoir ça ce soir (je devrais peut être le supprimer)
-    this.lastInjection = null;
   }
 
 }
