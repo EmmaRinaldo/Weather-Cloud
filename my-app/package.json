@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "prestart": "node generate-env.js",
     "start": "ng serve",
+    "prebuild": "node generate-env.js",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -34,6 +36,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/leaflet": "^1.9.9",
     "autoprefixer": "^10.4.18",
+    "dotenv": "^17.4.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
