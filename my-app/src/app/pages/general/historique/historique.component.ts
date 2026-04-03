@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavBarComponent } from '../../../components/nav-bar/nav-bar.component';
-import { AuthGoogleService } from '../../../services/auth-google.service';
+import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { SessionService } from '../../../services/session.service';
@@ -25,7 +25,7 @@ export class HistoriqueComponent implements OnInit {
   constructor(
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private authService: AuthGoogleService,
+    private authService: AuthService,
     private sessionService: SessionService,
   ) { }
 

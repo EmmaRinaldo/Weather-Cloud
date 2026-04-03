@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <img src="../../../assets/logo-cloud-weather.webp" alt="App Logo" class="mb-4" style="width: 100px;">
+          <h1 class="card-title mb-3">Créer un compte</h1>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="text-start">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="form-control"
+                formControlName="email"
+                [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+              >
+              <div class="invalid-feedback">Email invalide.</div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input
+                id="password"
+                type="password"
+                class="form-control"
+                formControlName="password"
+                [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+              >
+              <div class="invalid-feedback">Le mot de passe doit contenir au moins 8 caractères.</div>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+              <input
+                id="confirmPassword"
+                type="password"
+                class="form-control"
+                formControlName="confirmPassword"
+                [class.is-invalid]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
+              >
+              <div class="invalid-feedback">Les mots de passe ne correspondent pas.</div>
+            </div>
+            <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Créer un compte</button>
+            </div>
+          </form>
+
+          <p class="mt-3 mb-0">Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

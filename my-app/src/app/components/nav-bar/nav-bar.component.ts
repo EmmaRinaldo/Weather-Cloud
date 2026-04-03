@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthGoogleService } from '../../services/auth-google.service';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit {
   @Input() pageName!: string;
 
   constructor(
-    private authService: AuthGoogleService,
+    private authService: AuthService,
     private router: Router
   ) {}
 

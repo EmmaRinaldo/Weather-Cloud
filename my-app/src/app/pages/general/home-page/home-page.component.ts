@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AuthGoogleService } from '../../../services/auth-google.service';
+import { AuthService } from '../../../services/auth.service';
 import { MapComponent } from '../../../components/map/map.component';
 import { SessionService } from '../../../services/session.service';
 import { NavBarComponent } from '../../../components/nav-bar/nav-bar.component';
@@ -31,12 +31,12 @@ export class HomePageComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private sessionService: SessionService,
-    private authService: AuthGoogleService,
+    private authService: AuthService,
   ) {}  
 
   ngOnInit(): void {
 
-    this.authService.isLoading.subscribe(isLoading => {
+    this.authService.isLoading.subscribe((isLoading: boolean) => {
       this.isLoading = isLoading;
 
       if (!isLoading) {
