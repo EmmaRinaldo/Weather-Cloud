@@ -20,25 +20,35 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mot de passe</label>
-              <input
-                id="password"
-                type="password"
-                class="form-control"
-                formControlName="password"
-                [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
-              >
-              <div class="invalid-feedback">Le mot de passe doit contenir au moins 8 caractères.</div>
+              <div class="input-group">
+                <input
+                  id="password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control"
+                  formControlName="password"
+                  [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+                >
+                <button type="button" class="btn btn-outline-secondary" (click)="showPassword = !showPassword" tabindex="-1">
+                  <span class="material-icons" style="font-size: 20px; vertical-align: middle;">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
+                </button>
+                <div class="invalid-feedback">Le mot de passe doit contenir au moins 8 caractères.</div>
+              </div>
             </div>
             <div class="mb-3">
               <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                class="form-control"
-                formControlName="confirmPassword"
-                [class.is-invalid]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
-              >
-              <div class="invalid-feedback">Les mots de passe ne correspondent pas.</div>
+              <div class="input-group">
+                <input
+                  id="confirmPassword"
+                  [type]="showConfirmPassword ? 'text' : 'password'"
+                  class="form-control"
+                  formControlName="confirmPassword"
+                  [class.is-invalid]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
+                >
+                <button type="button" class="btn btn-outline-secondary" (click)="showConfirmPassword = !showConfirmPassword" tabindex="-1">
+                  <span class="material-icons" style="font-size: 20px; vertical-align: middle;">{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</span>
+                </button>
+                <div class="invalid-feedback">Les mots de passe ne correspondent pas.</div>
+              </div>
             </div>
             <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
             <div class="d-grid">

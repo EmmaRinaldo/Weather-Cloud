@@ -54,14 +54,19 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mot de passe</label>
-              <input
-                id="password"
-                type="password"
-                class="form-control"
-                formControlName="password"
-                [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-              >
-              <div class="invalid-feedback">Mot de passe requis.</div>
+              <div class="input-group">
+                <input
+                  id="password"
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control"
+                  formControlName="password"
+                  [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                >
+                <button type="button" class="btn btn-outline-secondary" (click)="showPassword = !showPassword" tabindex="-1">
+                  <span class="material-icons" style="font-size: 20px; vertical-align: middle;">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
+                </button>
+                <div class="invalid-feedback">Mot de passe requis.</div>
+              </div>
             </div>
             <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
             <div class="d-grid">

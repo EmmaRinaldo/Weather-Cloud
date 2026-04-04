@@ -19,6 +19,8 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
 })
 export class RegisterComponent {
   errorMessage: string | null = null;
+  showPassword = false;
+  showConfirmPassword = false;
 
   registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
