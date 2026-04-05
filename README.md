@@ -1,13 +1,42 @@
-# Weather Cloud
+# Weather Cloud — Frontend
 
-Application météo Angular avec authentification Google OAuth, carte interactive et historique des sessions.
+Application météo full-stack avec authentification, carte interactive et historique des sessions.
 
-## Stack
+## Aperçu
 
-- **Frontend** : Angular 17, Angular Material, Tailwind CSS
-- **Carte** : Leaflet
-- **Auth** : Google OAuth 2.0 (angular-oauth2-oidc)
-- **Déploiement** : Railway
+L'utilisateur se connecte, la carte détecte sa position, et l'app affiche les données météo correspondantes. Chaque session est enregistrée côté backend et consultable dans l'historique.
+
+## Skills & Technologies
+
+### Framework & Langage
+- **Angular 17** — architecture standalone components (sans NgModule), routing, lazy loading
+- **TypeScript** — typage strict, interfaces, generics
+
+### UI & Style
+- **Angular Material** — composants (cards, forms, dialogs, toolbar)
+- **Tailwind CSS** — responsive design utility-first
+
+### Cartographie
+- **Leaflet** — carte interactive, géolocalisation navigateur, marqueur personnalisé, events map
+
+### Authentification & Sécurité
+- **JWT** — stockage token en localStorage, décodage du payload (base64)
+- **HTTP Interceptor** — injection automatique du header `Authorization: Bearer <token>` sur chaque requête
+- **Route Guards** — protection des routes privées (`canActivate`)
+
+### Programmation Réactive
+- **RxJS** — `BehaviorSubject`, `Observable`, `tap`, gestion d'état asynchrone
+- **Angular HttpClient** — consommation d'une REST API, gestion des erreurs
+
+### Architecture
+- **Services Angular** — `AuthService`, `SessionService` injectés via `inject()`
+- **Component communication** — `@Output` / `EventEmitter` (ex: MapComponent → HomePageComponent)
+- **Dependency Injection** — pattern Angular natif avec `inject()`
+
+### DevOps & Déploiement
+- **Netlify** — déploiement continu, plugin `@netlify/angular-runtime`
+- **Variables d'environnement** — script `generate-env.js` qui génère `environment.ts` au build depuis les env vars
+- **`ngx-env/builder`** — exposition des variables d'environnement dans Angular
 
 ## Prérequis
 
@@ -23,16 +52,9 @@ npm install
 
 ## Configuration
 
-Copie le fichier d'exemple et remplis tes valeurs :
-
-```bash
-cp .env.example .env
-```
-
-Variables à renseigner dans `.env` :
+Créer un fichier `.env` dans `my-app/` :
 
 ```
-GOOGLE_CLIENT_ID=your-google-client-id
 API_URL=https://your-api-url.com
 ```
 
@@ -52,13 +74,12 @@ npm run build
 
 Le script `generate-env.js` s'exécute automatiquement avant le build et génère `src/environments/environment.ts` depuis les variables d'environnement.
 
-## Déploiement Railway
+## Déploiement Netlify
 
-Dans le dashboard Railway, ajouter les variables d'environnement suivantes :
+Dans le dashboard Netlify, ajouter :
 
 | Variable | Description |
 |---|---|
-| `GOOGLE_CLIENT_ID` | Client ID Google OAuth |
 | `API_URL` | URL de l'API backend |
 
-Railway exécute `npm run build` automatiquement — le fichier `environment.ts` est généré au moment du build.
+Netlify exécute `npm run build` automatiquement via `netlify.toml`.
