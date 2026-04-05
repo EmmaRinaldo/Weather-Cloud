@@ -23,7 +23,17 @@ export class NavBarComponent implements OnInit {
     private router: Router
   ) {}
 
+  greeting: string = '';
+
   ngOnInit(): void {
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      this.greeting = 'Bonjour !';
+    } else if (hour < 18) {
+      this.greeting = 'Bon après-midi !';
+    } else {
+      this.greeting = 'Bonsoir !';
+    }
   }
 
   logOut(): void {

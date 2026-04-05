@@ -48,25 +48,29 @@
                 type="email"
                 class="form-control"
                 formControlName="email"
+                style="background-image: none;"
                 [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
               >
               <div class="invalid-feedback">Email invalide.</div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mot de passe</label>
-              <div class="input-group">
+              <div style="position: relative;">
                 <input
                   id="password"
                   [type]="showPassword ? 'text' : 'password'"
                   class="form-control"
                   formControlName="password"
+                  style="padding-right: 2.5rem; background-image: none;"
                   [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
                 >
-                <button type="button" class="btn btn-outline-secondary" (click)="showPassword = !showPassword" tabindex="-1">
-                  <span class="material-icons" style="font-size: 20px; vertical-align: middle;">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
-                </button>
-                <div class="invalid-feedback">Mot de passe requis.</div>
+                <span
+                  class="material-icons"
+                  (click)="showPassword = !showPassword"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 20px; cursor: pointer; color: #6c757d;"
+                >{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
               </div>
+              <div class="invalid-feedback" [class.d-block]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Mot de passe requis.</div>
             </div>
             <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
             <div class="d-grid">
